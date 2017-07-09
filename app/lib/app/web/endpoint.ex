@@ -36,7 +36,7 @@ defmodule App.Web.Endpoint do
   plug Plug.Session,
     store: :cookie,
     key: "_app_key",
-    signing_salt: "8mfZFc96"
+    signing_salt: System.get_env("PHOENIX_SIGNING_SALT")
 
   plug App.Web.Router
 
