@@ -1,0 +1,23 @@
+version: '3.1'
+services:
+  phoenix:
+    build: .
+    depends_on:
+      - postgres
+    env_file:
+      - envs/phoenix
+      - envs/postgres
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/srv
+  postgres:
+    env_file:
+      - envs/postgres
+    image: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres:/var/lib/postgresql/data
+volumes:
+  postgres:
