@@ -17,7 +17,7 @@ then
 else
   mix phx.new "$PHOENIX_APPLICATION_NAME" --no-brunch
   cd "$PHOENIX_APPLICATION_NAME"
-  sed -i 's/localhost/postgres/' config/dev.exs config/test.exs
+  sed -i "s/localhost/$POSTGRES_SERVICE/" config/dev.exs config/test.exs
   mix deps.get
   mix ecto.create
   mix phx.server
